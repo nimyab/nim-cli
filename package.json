@@ -1,0 +1,17 @@
+{
+  "name": "nim-cli",
+  "preferGlobal": true,
+  "bin": "./index.js",
+  "version": "1.0.0",
+  "description": "cli for create projects on ts",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "nimyab",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^12.1.0",
+    "fs-extra": "^11.2.0"
+  }
+}
