@@ -26,5 +26,5 @@ export const createEmptyProject = (projectName: string) => {
   packageJson.engines = NodeEngines;
   fs.writeJsonSync(packageJsonPath, packageJson, { spaces: 2 });
 
-  fs.copySync(path.join(__dirname, '../templates/empty'), projectPath);
+  fs.copySync(path.join(__dirname, '../../templates/empty'), projectPath);
 };
