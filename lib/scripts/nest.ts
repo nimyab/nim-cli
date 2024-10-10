@@ -34,5 +34,5 @@ export const createNestProject = (projectName: string) => {
   fs.writeJsonSync(packageJsonPath, packageJson, { spaces: 2 });
 
   fs.removeSync(path.join(projectPath, '.prettierrc'));
-  fs.copySync(path.join(__dirname, '../../templates/nest'), projectPath);
+  fs.copySync(path.join(__dirname, '../templates/nest'), projectPath);
 };
