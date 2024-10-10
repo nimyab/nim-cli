@@ -1,6 +1,6 @@
 {
   "name": "@nimyab/nim-cli",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "cli for create projects on nodejs with typescript",
   "keywords": [
     "nim",
@@ -38,7 +38,7 @@
     "node": ">=20.0.0"
   },
   "scripts": {
-    "build": "tsup",
+    "build": "shx rm -rf dist && tsc -p tsconfig.json",
     "postinstall": "npm install -g pnpm && pnpm add -g @nestjs/cli",
     "prerelease": "pnpm build",
     "release": "bumpp && pnpm publish"
@@ -52,7 +52,7 @@
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^22.7.5",
     "bumpp": "^9.7.1",
-    "tsup": "^8.3.0",
+    "shx": "^0.3.4",
     "typescript": "^5.6.3"
   }
 }
