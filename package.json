@@ -1,17 +1,58 @@
 {
-  "name": "nim-cli",
-  "preferGlobal": true,
-  "bin": "./index.js",
-  "version": "1.0.0",
-  "description": "cli for create projects on ts",
-  "scripts": {
-    "start": "node index.js"
+  "name": "@nimyab/nim-cli",
+  "version": "0.1.0",
+  "description": "cli for create projects on nodejs with typescript",
+  "keywords": [
+    "nim",
+    "nim-cli",
+    "nest-cli",
+    "nest",
+    "cli",
+    "nodejs",
+    "typescript"
+  ],
+  "author": {
+    "name": "nimyab",
+    "url": "https://github.com/nimyab"
   },
-  "keywords": [],
-  "author": "nimyab",
-  "license": "ISC",
+  "homepage": "https://github.com/nimyab/nim-cli",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nimyab/nim-cli"
+  },
+  "bugs": {
+    "url": "https://github.com/nimyab/nim-cli/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist",
+    "templates"
+  ],
+  "license": "MIT",
+  "bin": {
+    "nim": "./dist/index.js"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "build": "tsup",
+    "postinstall": "npm install -g pnpm && pnpm add -g @nestjs/cli",
+    "prerelease": "pnpm build",
+    "release": "bumpp && pnpm publish"
+  },
   "dependencies": {
     "commander": "^12.1.0",
     "fs-extra": "^11.2.0"
+  },
+  "devDependencies": {
+    "@mkas3/prettier": "^1.0.1",
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^22.7.5",
+    "bumpp": "^9.7.1",
+    "tsup": "^8.3.0",
+    "typescript": "^5.6.3"
   }
 }
