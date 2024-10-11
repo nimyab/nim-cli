@@ -25,6 +25,21 @@ export const NestScripts = {
 
 export const EmptyScripts = {
   build: 'tsc',
+  'build:start': 'tsc && node dist/index.js',
   start: 'node dist/index.js',
   dev: 'tsx src/index.ts'
+};
+
+export const ExpressScripts = {
+  build: 'tsc',
+  'build:start': 'tsc && node dist/index.js',
+  start: 'tsc && node dist/index.js',
+  dev: 'nodemon src/index.ts'
+};
+
+export const TgBotScripts = {
+  build: 'tsc',
+  'build:start': 'tsc && node dist/index.js',
+  start: 'tsc && node dist/index.js',
+  dev: 'tsx watch src/index.ts'
 };

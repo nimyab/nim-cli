@@ -2,7 +2,7 @@ import { execSync } from 'child_process';
 import fs from 'fs-extra';
 import path from 'path';
 import { NodeEngines } from '../settings/engines';
-import { EmptyScripts } from '../settings/scripts';
+import { TgBotScripts } from '../settings/scripts';
 
 export const createTgBotProject = (projectName: string) => {
   const projectPath = path.join(process.cwd(), projectName);
@@ -15,6 +15,11 @@ export const createTgBotProject = (projectName: string) => {
 
   execSync('npm init -y', { cwd: projectPath, stdio: 'inherit' });
 
+  execSync('pnpm add grammy', {
+    cwd: projectPath,
+    stdio: 'inherit'
+  });
+
   execSync('pnpm add -D typescript tsx @types/node @mkas3/prettier', {
     cwd: projectPath,
     stdio: 'inherit'
@@ -22,9 +27,13 @@ export const createTgBotProject = (projectName: string) => {
 
   const packageJsonPath = path.join(projectPath, 'package.json');
   const packageJson = fs.readJsonSync(packageJsonPath);
-  packageJson.scripts = EmptyScripts;
+  packageJson.scripts = TgBotScripts;
   packageJson.engines = NodeEngines;
   fs.writeJsonSync(packageJsonPath, packageJson, { spaces: 2 });
 
-  fs.copySync(path.join(__dirname, '../../templates/empty'), projectPath);
+  try {
+    fs.copySync(path.join(__dirname, '../../templates/tg-bot'), projectPath);
+  } catch (error) {
+    console.log('having problems copying files');
+  }
 };

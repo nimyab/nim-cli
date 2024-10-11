@@ -32,7 +32,14 @@ export const createNestProject = (projectName: string) => {
   packageJson.scripts = NestScripts;
   packageJson.engines = NodeEngines;
   fs.writeJsonSync(packageJsonPath, packageJson, { spaces: 2 });
-
-  fs.removeSync(path.join(projectPath, '.prettierrc'));
-  fs.copySync(path.join(__dirname, '../../templates/nest'), projectPath);
+  try {
+    fs.removeSync(path.join(projectPath, '.prettierrc'));
+  } catch (error) {
+    console.log('.prettierrc not remove');
+  }
+  try {
+    fs.copySync(path.join(__dirname, '../../templates/nest'), projectPath);
+  } catch (error) {
+    console.log('having problems copying files');
+  }
 };

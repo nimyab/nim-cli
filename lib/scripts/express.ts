@@ -4,7 +4,7 @@ import path from 'path';
 import { NodeEngines } from '../settings/engines';
 import { EmptyScripts } from '../settings/scripts';
 
-export const createEmptyProject = (projectName: string) => {
+export const createExpressProject = (projectName: string) => {
   const projectPath = path.join(process.cwd(), projectName);
 
   if (fs.existsSync(projectPath)) {
@@ -15,7 +15,12 @@ export const createEmptyProject = (projectName: string) => {
 
   execSync('npm init -y', { cwd: projectPath, stdio: 'inherit' });
 
-  execSync('pnpm add -D typescript tsx @types/node @mkas3/prettier', {
+  execSync('pnpm add express dotenv', {
+    cwd: projectPath,
+    stdio: 'inherit'
+  });
+
+  execSync('pnpm add -D typescript @types/node @types/express @mkas3/prettier nodemon', {
     cwd: projectPath,
     stdio: 'inherit'
   });
@@ -27,7 +32,7 @@ export const createEmptyProject = (projectName: string) => {
   fs.writeJsonSync(packageJsonPath, packageJson, { spaces: 2 });
 
   try {
-    fs.copySync(path.join(__dirname, '../../templates/nest'), projectPath);
+    fs.copySync(path.join(__dirname, '../../templates/express'), projectPath);
   } catch (error) {
     console.log('having problems copying files');
   }

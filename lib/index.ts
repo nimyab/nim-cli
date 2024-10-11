@@ -4,6 +4,7 @@ import { Command } from 'commander';
 import { createEmptyProject } from './scripts/empty';
 import { createNestProject } from './scripts/nest';
 import { createTgBotProject } from './scripts/tg-bot';
+import { createExpressProject } from './scripts/express';
 
 const program = new Command();
 
@@ -28,6 +29,14 @@ program
   .description('create new nodejs project for tg-bot')
   .action((projectName: string) => {
     createTgBotProject(projectName);
+    console.log('success.');
+  });
+
+program
+  .command('express <projectName>')
+  .description('create new express app')
+  .action((projectName: string) => {
+    createExpressProject(projectName);
     console.log('success.');
   });
 

@@ -35,10 +35,11 @@
     "nim": "./dist/index.js"
   },
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=20.x.x"
   },
   "scripts": {
     "build": "shx rm -rf dist && tsc -p tsconfig.json",
+    "build:tsup": "tsup",
     "postinstall": "npm install -g pnpm && pnpm add -g @nestjs/cli",
     "prerelease": "pnpm build",
     "release": "bumpp && pnpm publish"
@@ -53,6 +54,7 @@
     "@types/node": "^22.7.5",
     "bumpp": "^9.7.1",
     "shx": "^0.3.4",
+    "tsup": "^8.3.0",
     "typescript": "^5.6.3"
   }
 }
