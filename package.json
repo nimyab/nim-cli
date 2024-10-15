@@ -1,6 +1,6 @@
 {
   "name": "@nimyab/nim-cli",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "cli for create projects on nodejs with typescript",
   "keywords": [
     "nim",
