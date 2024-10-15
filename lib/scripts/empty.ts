@@ -27,7 +27,7 @@ export const createEmptyProject = (projectName: string) => {
   fs.writeJsonSync(packageJsonPath, packageJson, { spaces: 2 });
 
   try {
-    fs.copySync(path.join(__dirname, '../../templates/nest'), projectPath);
+    fs.copySync(path.join(__dirname, '../../templates/empty'), projectPath);
   } catch (error) {
     console.log('having problems copying files');
   }
